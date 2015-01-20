@@ -24,11 +24,16 @@ class Album {
     /** @Column(length=140) */
     private $img_path;
     
-    /** @Column(type="date") */
+    /** @Column(length=140) */
     private $prochaine_sortie = '0000-00-00';
     
     /** @Column(type="boolean") */
     private $fini = false;
+    
+    
+    public function Album(){
+        $this->prochaine_sortie = '0000-00-00';
+    }
     
     
     /**
@@ -192,6 +197,18 @@ class Album {
         }
         
         return $array;
+    }
+    
+    //@todo remplir avec une foreach
+    public function loadFromPost($params) {
+        
+        $this->titre = $params['titre'];
+        $this->fini = $params['fini'];
+        $this->total = $params['total'];
+        $this->possede = $params['possede'];
+        $this->img_path = $params['img_path'];
+        $this->prochaine_sortie = $params['prochaine_sortie'];
+        
     }
     
 }
